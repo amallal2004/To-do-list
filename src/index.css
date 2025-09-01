@@ -1,13 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Itim", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #202d73 0%, #421364 100%);
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 400px;
+  margin: 50px auto;
+}
+
+.card__heading {
+  font-size: 24px;
+  color: #012067;
+}
+
+.card__input {
+  display: flex;
+  justify-content: space-between;
+  height: 43px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 43px;
+  background-color: #edeef0;
+}
+
+.card__text-area {
+  flex: 1;
+  padding: 10px;
+  padding-left: 20px;
+  border: none;
+  border-radius: 43px;
+  font-size: 16px;
+  outline: none;
+  background-color: #edeef0;
+  font-family: "Itim", cursive;
+}
+
+.card__text-area::placeholder {
+  font-family: "Itim", cursive;
+}
+
+.card__button {
+  background-color: #ff5845;
+  color: #ffffff;
+  border: none;
+  border-radius: 43px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-family: "Itim", cursive;
 }
