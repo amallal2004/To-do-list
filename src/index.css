@@ -65,6 +65,20 @@ code {
   font-family: "Itim", cursive;
 }
 
+.tasks__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tasks__delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #2a2718;
+}
+
 .tasks__checkbox {
   position: relative;
   font-size: 18px;

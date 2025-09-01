@@ -33,17 +33,40 @@ export default function App() {
     setNewTask(value);
   }
 
+  function handleDeleteTask(e, id) {
+    e.preventDefault();
+    setTasks((tasks) => tasks.filter((task) => task.id !== id));
+  }
+
+  function handleCompleteTask(e, id) {
+    // e.preventDefault();
+    setTasks((tasks) =>
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  }
+
   return (
     <Card
       tasks={tasks}
       onSubmitTask={handleAddTask}
       newTask={newTask}
       onTaskChange={handleTaskChange}
+      onTaksDelete={handleDeleteTask}
+      onCompleteTask={handleCompleteTask}
     />
   );
 }
 
-function Card({ tasks, onSubmitTask, newTask, onTaskChange }) {
+function Card({
+  tasks,
+  onSubmitTask,
+  newTask,
+  onTaskChange,
+  onTaksDelete,
+  onCompleteTask,
+}) {
   return (
     <div className="card">
       <h1 className="card__heading">To-Do List 📝</h1>
@@ -56,21 +79,37 @@ function Card({ tasks, onSubmitTask, newTask, onTaskChange }) {
         />
         <button className="card__button">Add Task</button>
       </form>
-      <Tasks tasks={tasks} />
+      <Tasks
+        tasks={tasks}
+        onTaksDelete={onTaksDelete}
+        onCompleteTask={onCompleteTask}
+      />
     </div>
   );
 }
 
-function Tasks({ tasks }) {
+function Tasks({ tasks, onTaksDelete, onCompleteTask }) {
+  const sortedTasks = [...tasks].sort((a, b) => a.completed - b.completed);
+
   return (
     <div className="tasks">
-      {tasks.map(({ id, task }) => (
+      {sortedTasks.map(({ id, task, completed }) => (
         <div key={id} className="tasks__item">
-          <label className="tasks__checkbox">
+          <label className={`tasks__checkbox ${completed ? "checked" : ""} `}>
             {task}
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              checked={completed}
+              onChange={(e) => onCompleteTask(e, id)}
+            />
             <span className="check" />
           </label>
+          <button
+            className="tasks__delete"
+            onClick={(e) => onTaksDelete(e, id)}
+          >
+            ✗
+          </button>
         </div>
       ))}
     </div>
