@@ -28,9 +28,11 @@ function Tasks() {
     <div className="tasks">
       {toDoList.map(({ id, task }) => (
         <div key={id} className="tasks__item">
-          <label className="tasks__checkbox">{task}</label>
-          <input type="checkbox" />
-          <span className="check" />
+          <label className="tasks__checkbox">
+            {task}
+            <input type="checkbox" />
+            <span className="check" />
+          </label>
         </div>
       ))}
     </div>
