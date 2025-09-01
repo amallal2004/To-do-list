@@ -6,6 +6,11 @@ A simple and classic to-do list application built with React.
 
 This project is a personal exercise to practice and experiment with React concepts. While the world has many to-do apps, building this one was a valuable learning experience. It serves as a playground for understanding state management, component lifecycle, and user interactions in a React environment.
 
+## Live Demo
+
+You can try the app live here:  
+[https://amallal2004.github.io/To-do-list](https://amallal2004.github.io/To-do-list)
+
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
@@ -37,6 +42,6 @@ npm start
 
 This project comes with the standard Create React App scripts:
 
--   `npm start`: Runs the app in development mode.
--   `npm test`: Launches the test runner.
--   `npm run build`: Builds the app for production.
+- `npm start`: Runs the app in development mode.
+- `npm test`: Launches the test runner.
+- `npm run build`: Builds the app for production.
