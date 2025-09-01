@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./index.css";
 
 const toDoList = [
@@ -7,26 +8,63 @@ const toDoList = [
 ];
 
 export default function App() {
-  return <Card />;
+  const [tasks, setTasks] = useState(toDoList);
+  const [newTask, setNewTask] = useState("");
+
+  function handleAddTask(e) {
+    e.preventDefault();
+
+    if (!newTask) return;
+
+    const id = crypto.randomUUID();
+
+    const newTaskItem = {
+      id,
+      task: newTask,
+      completed: false,
+    };
+
+    e.target.previousSibling.value = "";
+    setTasks((tasks) => [...tasks, newTaskItem]);
+    setNewTask("");
+  }
+
+  function handleTaskChange(value) {
+    setNewTask(value);
+  }
+
+  return (
+    <Card
+      tasks={tasks}
+      onSubmitTask={handleAddTask}
+      newTask={newTask}
+      onTaskChange={handleTaskChange}
+    />
+  );
 }
 
-function Card() {
+function Card({ tasks, onSubmitTask, newTask, onTaskChange }) {
   return (
     <div className="card">
       <h1 className="card__heading">To-Do List 📝</h1>
-      <div className="card__input">
-        <input className="card__text-area" placeholder="Add a new task..." />
+      <form className="card__input" onSubmit={(e) => onSubmitTask(e)}>
+        <input
+          className="card__text-area"
+          value={newTask}
+          placeholder="Add a new task..."
+          onChange={(e) => onTaskChange(e.target.value)}
+        />
         <button className="card__button">Add Task</button>
-      </div>
-      <Tasks />
+      </form>
+      <Tasks tasks={tasks} />
     </div>
   );
 }
 
-function Tasks() {
+function Tasks({ tasks }) {
   return (
     <div className="tasks">
-      {toDoList.map(({ id, task }) => (
+      {tasks.map(({ id, task }) => (
         <div key={id} className="tasks__item">
           <label className="tasks__checkbox">
             {task}
