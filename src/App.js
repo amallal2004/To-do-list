@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./index.css";
 
 const toDoList = [
-  { id: 1, task: "Buy groceries", completed: false },
-  { id: 2, task: "Walk the dog", completed: true },
+  { id: 1, task: "Go to gym", completed: false },
+  { id: 2, task: "Drink 4l water", completed: true },
   { id: 3, task: "Read a book", completed: false },
 ];
 
